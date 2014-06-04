@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
