@@ -1,7 +1,15 @@
-- if flash[:notice].present?
-  .alert.alert-info
-    = flash[:notice]
+- if flash[:info].present?
+  li.alert.info
+    = flash[:info]
 
-- if flash[:alert].present?
-  .alert.alert-danger
-    = flash[:alert]
+- if flash[:success].present?
+  li.alert.success
+    = flash[:success]
+
+- if flash[:warning].present?
+  li.alert.warning
+    = flash[:warning]
+
+- if flash[:danger].present?
+  li.alert.danger
+    = flash[:danger]

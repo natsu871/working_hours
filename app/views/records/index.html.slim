@@ -1,0 +1,18 @@
+h2= 'records'
+
+table
+  thead
+    tr
+      th= 'date'
+      th= 'started at'
+      th= 'ended at'
+      th= 'break time'
+      th= 'absence'
+  tbody
+    - @records.each do |record|
+      tr
+        td= record.recorded_on
+        td= record.started_at
+        td= record.ended_at
+        td= record.break_time
+        td= record.absence
