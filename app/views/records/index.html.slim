@@ -1,18 +1,28 @@
 h2= 'records'
 
-table
+table.striped.rounded
   thead
     tr
       th= 'date'
       th= 'started at'
       th= 'ended at'
+      th= 'work hours'
       th= 'break time'
       th= 'absence'
   tbody
+    - total_time = 0
     - @records.each do |record|
       tr
         td= record.recorded_on
-        td= record.started_at
-        td= record.ended_at
+        td= record.started_at.strftime("%H:%M") if record.started_at.presence
+        td= record.ended_at.strftime("%H:%M") if record.ended_at.presence
+        - work_secs = calc_times(record.started_at, record.ended_at, record.break_time)
+        - total_time += work_secs unless work_secs.nil?
+        td= format_hours_and_mins(work_secs)
         td= record.break_time
         td= record.absence
+
+h4= 'THIS MONTH TOTAL: ' + format_hours_and_mins(total_time)
+h4= 'AVG: ' + format_hours_and_mins(total_time / self.valid_count)
+h4= 'PAST: ' + self.valid_count.to_s + 'days'
+h4= 'MARGIN: ' + format_hours_and_mins(calc_margin(total_time))
