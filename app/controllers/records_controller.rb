@@ -9,11 +9,14 @@ class RecordsController < ApplicationController
 
   def create
     @record = Record.new(record_params)
+    @record.recorded_on = Date.today
+    @record.ended_at = nil
     if @record.save
       flash[:success] = 'Created'
       redirect_to records_path
     else
-      render action: :index
+      flash[:warning] = 'Failed'
+      render action: :new
     end
   end
 

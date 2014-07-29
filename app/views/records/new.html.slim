@@ -8,10 +8,10 @@ h3= d.strftime('%a')
       - f.date_select :recorded_on
     li.field
       = f.label :started_at
-      = f.datetime_select :started_at, { use_month_numbers: true, discard_day: true, discard_month: true, discard_year: true }
+      = f.datetime_select :started_at, { use_month_numbers: true }
     li.field
       = f.label :ended_at
-      = f.datetime_select :ended_at, { use_month_numbers: true, discard_day: true, discard_month: true, discard_year: true }
+      = f.datetime_select :ended_at, { use_month_numbers: true }
     li.field
       div.medium.oval.btn.default
         a= f.submit
