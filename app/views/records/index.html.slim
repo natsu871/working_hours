@@ -9,6 +9,7 @@ table.striped.rounded
       th= 'work hours'
       th= 'break time'
       th= 'absence'
+      th
   tbody
     - total_time = 0
     - @records.each do |record|
@@ -21,6 +22,11 @@ table.striped.rounded
         td= format_hours_and_mins(work_secs)
         td= record.break_time
         td= record.absence
+        td
+          div.small.pill-left.btn.info
+            = link_to 'Edit', edit_record_path(record)
+          div.small.pill-right.btn.danger
+            = link_to 'Remove', record_path(record), method: :delete, data: {confirm: 'Sure?'}
 
 h4= 'THIS MONTH TOTAL: ' + format_hours_and_mins(total_time)
 h4= 'AVG: ' + format_hours_and_mins(total_time / self.valid_count)

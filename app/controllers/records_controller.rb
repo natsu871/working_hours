@@ -34,9 +34,19 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    @record = Record.find(params[:id])
+    if @record.destroy
+      flash[:success] = 'Removed'
+      redirect_to records_path
+    else
+      redirect_to records_path
+    end
+  end
+
   private
 
   def record_params
-    params.require(:record).permit(:recorded_on, :started_at, :ended_at)
+    params.require(:record).permit(:recorded_on, :started_at, :ended_at, :break_time, :absence)
   end
 end

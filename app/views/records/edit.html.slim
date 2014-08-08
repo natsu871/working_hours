@@ -1,3 +1,24 @@
 h2= 'edit'
 
-= render 'form'
+= form_for @record do |f|
+  ul
+    li.field
+      = f.label :recorded_on
+      = f.date_select :recorded_on, { use_month_numbers: true }
+    li.field
+      = f.label :started_at
+      = f.datetime_select :started_at, { use_month_numbers: true }
+    li.field
+      = f.label :ended_at
+      = f.datetime_select :ended_at, { use_month_numbers: true }
+    li.field.append.break_time
+      = f.label :break_time
+      = f.text_field :break_time, { class: 'numeric input' }
+      span.adjoined hour
+    li.field
+      = f.label :absence
+      div.picker
+        = f.select :absence, Record::ABSENCE_TYPES.invert
+    li.field
+      div.medium.oval.btn.default
+        a= f.submit
