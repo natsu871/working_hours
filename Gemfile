@@ -28,6 +28,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'puma'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'quiet_assets'
