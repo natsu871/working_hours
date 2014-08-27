@@ -16,12 +16,4 @@ module RecordsHelper
       end
     end
   end
-
-  def valid_count
-    Record.where('started_at is not null').where('ended_at is not null').count
-  end
-
-  def calc_margin(secs)
-    secs - (60 * 60 * 8 * valid_count)
-  end
 end

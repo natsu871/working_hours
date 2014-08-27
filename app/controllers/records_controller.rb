@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   def index
-    @records = Record.all
+    @records = Record.where(recorded_on: Date.today.beginning_of_month..Date.today.end_of_month)
   end
 
   def new

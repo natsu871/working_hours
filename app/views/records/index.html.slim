@@ -29,6 +29,6 @@ table.striped.rounded
             = link_to 'Remove', record_path(record), method: :delete, data: {confirm: 'Sure?'}
 
 h4= 'THIS MONTH TOTAL: ' + format_hours_and_mins(total_time)
-h4= 'AVG: ' + format_hours_and_mins(total_time / self.valid_count)
-h4= 'PAST: ' + self.valid_count.to_s + 'days'
-h4= 'MARGIN: ' + format_hours_and_mins(calc_margin(total_time))
+h4= 'AVG: ' + format_hours_and_mins(total_time / @records.valid_count)
+h4= 'PAST: ' + @records.valid_count.to_s + 'days'
+h4= 'MARGIN: ' + format_hours_and_mins(@records.calc_margin(total_time))
