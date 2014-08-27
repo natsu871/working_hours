@@ -4,7 +4,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.where('recorded_on = ?', Date.today).first || Record.new
+    @record = Record.where(recorded_on: Date.today).first || Record.new
   end
 
   def create
