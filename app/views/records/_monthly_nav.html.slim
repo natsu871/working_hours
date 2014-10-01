@@ -1,0 +1,14 @@
+section.pill.tabs
+  ul.monthly_nav.tab-nav
+    li.prev_month
+      = link_to content_tag(:i, '', class: 'icon-left-open-big'), path: records_path, target_date: Date.new(@target_date.prev_month.year, @target_date.prev_month.month)
+    - -1.upto(1) do |num|
+      - index = @target_date.advance(months: num)
+      - if index == @target_date
+        li.this_month
+          = index.strftime('%Y-%m')
+      - else
+        li
+          = link_to index.month.to_s, path: records_path, target_date: Date.new(index.year, index.month)
+    li.next_month
+      = link_to content_tag(:i, '', class: 'icon-right-open-big'), path: records_path, target_date: Date.new(@target_date.next_month.year, @target_date.next_month.month)

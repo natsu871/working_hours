@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   def index
-    @records = Record.where(recorded_on: Date.today.beginning_of_month..Date.today.end_of_month)
+    @target_date = (params[:target_date] || Date.today).to_date
+    @records = Record.where(recorded_on: @target_date.beginning_of_month..@target_date.end_of_month).order("recorded_on ASC")
   end
 
   def new

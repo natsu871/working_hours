@@ -1,0 +1,13 @@
+section.pill.tabs {
+  margin: 20px;
+  float: right;
+  width: 400px;
+  ul {
+    li.this_month {
+      font-size: 18px;
+    }
+    li.prev_month a, li.next_month a {
+      padding: 0;
+    }
+  }
+}
