@@ -8,6 +8,17 @@ html
     = csrf_meta_tags
 
   body
+    #nav.navbar
+      .row
+        h1.six.columns.logo
+          = link_to 'workhours', root_path
+        ul.six.columns
+          li
+            = link_to "Register Today's Record", new_record_path(recorded_on: Date.today)
+          li
+            = link_to 'Register New', new_record_path
+          li
+            = link_to 'Records', records_path
     .row
       = render 'layouts/messages'
     .row

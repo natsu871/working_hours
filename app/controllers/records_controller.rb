@@ -5,7 +5,11 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.where(recorded_on: Date.today).first || Record.new
+    if params[:recorded_on]
+      @record = Record.where(recorded_on: params[:recorded_on]).first_or_initialize
+    else
+      @record = Record.new
+    end
   end
 
   def create
