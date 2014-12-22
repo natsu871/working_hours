@@ -10,6 +10,8 @@ html
   body
     #nav.navbar
       .row
+        = link_to "#", { class: "toggle", "gumby-trigger" => "#nav > .row > ul" } do
+          = content_tag(:i, nil, class: 'icon-menu')
         h1.six.columns.logo
           = link_to 'workhours', root_path
         ul.six.columns
