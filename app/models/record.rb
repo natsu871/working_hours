@@ -14,7 +14,15 @@ class Record < ActiveRecord::Base
     where('started_at is not null').where('ended_at is not null').count
   end
 
+  def self.usual
+    where(absence: 0)
+  end
+
+  def self.halfday
+    where(absence: 2)
+  end
+
   def self.calc_margin(secs)
-    secs - (60 * 60 * 8 * valid_count)
+    secs - (60 * 60 * 8 * usual.valid_count) - (60 * 60 * 4 * halfday.valid_count)
   end
 end
